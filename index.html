@@ -3,21 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Only You ❤️</title>
+<title>My Love ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
 body{
   height:100vh;
-  background:url('bg.jpg') center/cover no-repeat;
+  background: url("bg.jpg") no-repeat center center/cover;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -32,55 +30,46 @@ body{
 
 .card{
   position:relative;
-  background:rgba(255,255,255,0.25);
-  backdrop-filter:blur(14px);
-  border-radius:26px;
-  padding:32px;
+  z-index:2;
+  background:rgba(255,255,255,0.9);
   width:90%;
   max-width:420px;
+  padding:22px;
+  border-radius:22px;
   text-align:center;
-  color:#7a003c;
-  animation:zoom 0.8s ease;
-  z-index:2;
+  animation: pop 0.8s ease;
 }
 
-h1{font-size:28px;margin-bottom:15px;}
-p{font-size:18px;line-height:1.6;}
+h2{
+  color:#b30059;
+  margin-bottom:10px;
+}
+
+p{
+  font-size:17px;
+  color:#333;
+  line-height:1.6;
+}
 
 img{
   width:100%;
-  border-radius:18px;
+  border-radius:15px;
   margin-top:15px;
 }
 
 button{
-  margin-top:22px;
-  padding:12px 30px;
+  margin-top:15px;
+  padding:10px 26px;
   border:none;
-  border-radius:30px;
-  background:#fff;
-  color:#d63384;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
   font-size:16px;
-  font-weight:600;
 }
 
-@keyframes zoom{
+@keyframes pop{
   from{transform:scale(0.7);opacity:0;}
   to{transform:scale(1);opacity:1;}
-}
-
-.heart{
-  position:fixed;
-  bottom:-10px;
-  font-size:26px;
-  animation:float 4s linear forwards;
-}
-
-@keyframes float{
-  to{
-    transform:translateY(-110vh) rotate(360deg);
-    opacity:0;
-  }
 }
 </style>
 </head>
@@ -89,75 +78,58 @@ button{
 
 <div class="overlay"></div>
 
-<audio id="music" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
 <div class="card" id="box">
-  <h1>Hey My Love ❤️</h1>
-  <p>Tap slowly… my heart beats for you 💓</p>
+  <h2>Hey My Love ❤️</h2>
+  <p>Tap slowly… something beautiful is waiting 💕</p>
   <button onclick="next()">Tap 💖</button>
 </div>
 
 <script>
-let step=0;
-
-function hearts(){
-  for(let i=0;i<7;i++){
-    let h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML=["❤️","💖","😘","💋","😍","💞"][Math.floor(Math.random()*6)];
-    h.style.left=Math.random()*100+"vw";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),4000);
-  }
-}
+let step = 0;
 
 function next(){
-  hearts();
-  document.getElementById("music").play();
-  const box=document.getElementById("box");
+  let box = document.getElementById("box");
   step++;
 
-  if(step==1){
-    box.innerHTML=`
+  if(step === 1){
+    box.innerHTML = `
       <p>
-      You don’t just hold my hand,<br>
-      you hold my whole world 🥹❤️
+        Holding your hand feels like<br>
+        holding my whole world 🥹❤️
       </p>
       <img src="love1.jpg">
-      <button onclick="next()">Next 💫</button>
+      <button onclick="next()">Next 💞</button>
     `;
   }
-  else if(step==2){
-    box.innerHTML=`
+  else if(step === 2){
+    box.innerHTML = `
       <p>
-      Loving you is my favorite habit,<br>
-      and I never want to quit 💕
+        Loving you is my favorite habit,<br>
+        and I never want to quit 💕
       </p>
       <img src="love2.jpg">
-      <button onclick="next()">More Love 😘</button>
+      <button onclick="next()">More 😘</button>
     `;
   }
-  else if(step==3){
-    box.innerHTML=`
+  else if(step === 3){
+    box.innerHTML = `
       <p>
-      In every crowd,<br>
-      my eyes search only YOU ♾️
+        No matter where life takes us,<br>
+        I choose YOU every time ♾️
       </p>
       <img src="love3.jpg">
-      <button onclick="next()">Final Surprise 💍</button>
+      <button onclick="next()">Final ❤️</button>
     `;
   }
   else{
-    box.innerHTML=`
-      <h1>Happy New Year ❤️</h1>
+    box.innerHTML = `
+      <h2>Happy New Year ❤️</h2>
       <p>
-      If I had one wish for 2025,<br>
-      it would be a lifetime with you 💞<br><br>
-      <b>— Forever Yours 😘</b>
+        If I had one wish for this year,<br>
+        it would be a lifetime with YOU 💍
       </p>
       <img src="love4.jpg">
+      <p><b>— Forever Yours 😘</b></p>
     `;
   }
 }
