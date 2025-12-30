@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Year Surprise ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(180deg,#2b1055,#7597de);
+  color:#fff;
+  scroll-snap-type:y mandatory;
+  overflow-y:scroll;
+}
+
+.section{
+  height:100vh;
+  scroll-snap-align:start;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+  animation:fadeUp 1.2s ease;
+}
+
+.card{
+  background:rgba(255,255,255,0.12);
+  border-radius:22px;
+  padding:35px;
+  max-width:420px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 40px rgba(0,0,0,0.3);
+}
+
+h1{
+  font-size:30px;
+  margin-bottom:15px;
+}
+
+p{
+  font-size:18px;
+  line-height:1.7;
+}
+
+.final{
+  background:linear-gradient(180deg,#ff5f9e,#9b4dff);
+}
+
+button{
+  margin-top:25px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:#fff;
+  color:#9b4dff;
+  font-size:16px;
+  font-weight:600;
+}
+
+.hidden{
+  display:none;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<section class="section">
+  <div class="card">
+    <h1>✨ Something special is waiting for you ✨</h1>
+    <p>Move the little distractions aside 💫</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="card">
+    <p>
+      Hey <b>Sir ji</b>,<br><br>
+      A new year begins…<br>
+      and you’re still the most beautiful part of my life 💜
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="card">
+    <p>
+      You make me smile without trying,<br>
+      you calm me without saying much,<br>
+      and you mean more to me than you know ❤️
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="card">
+    <p>
+      In 2026, I want more laughs with you,<br>
+      more late-night talks,<br>
+      more memories,<br>
+      and a lifetime of love with YOU ♾️
+    </p>
+  </div>
+</section>
+
+<section class="section final">
+  <div class="card">
+    <h1>🎆 Happy New Year Sir ji 🎆</h1>
+    <p>
+      I choose YOU today, tomorrow and always.<br><br>
+      <b>Forever with me? 💍</b>
+    </p>
+
+    <button onclick="reveal()">Tap for Final Message 💖</button>
+
+    <p id="loveMsg" class="hidden">
+      <br>I love you baby ❤️ 😘<br>
+      — Diku
+    </p>
+  </div>
+</section>
+
+<script>
+function reveal(){
+  document.getElementById("loveMsg").style.display="block";
+}
+</script>
+
+</body>
+</html>
