@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New Year Surprise ❤️</title>
+<title>Just For You ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
 *{
   margin:0;
@@ -16,49 +16,32 @@
 }
 
 body{
-  background:linear-gradient(180deg,#2b1055,#7597de);
-  color:#fff;
-  scroll-snap-type:y mandatory;
-  overflow-y:scroll;
-}
-
-.section{
+  background:linear-gradient(180deg,#ff5f9e,#9b4dff);
   height:100vh;
-  scroll-snap-align:start;
+  overflow:hidden;
   display:flex;
-  align-items:center;
   justify-content:center;
-  text-align:center;
-  padding:30px;
-  animation:fadeUp 1.2s ease;
+  align-items:center;
+  color:#fff;
 }
 
 .card{
-  background:rgba(255,255,255,0.12);
-  border-radius:22px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(14px);
+  border-radius:25px;
   padding:35px;
+  width:90%;
   max-width:420px;
-  backdrop-filter:blur(12px);
-  box-shadow:0 10px 40px rgba(0,0,0,0.3);
+  text-align:center;
+  animation:pop 0.8s ease;
 }
 
-h1{
-  font-size:30px;
-  margin-bottom:15px;
-}
-
-p{
-  font-size:18px;
-  line-height:1.7;
-}
-
-.final{
-  background:linear-gradient(180deg,#ff5f9e,#9b4dff);
-}
+h1{font-size:28px;margin-bottom:15px;}
+p{font-size:18px;line-height:1.6;}
 
 button{
   margin-top:25px;
-  padding:12px 30px;
+  padding:12px 28px;
   border:none;
   border-radius:30px;
   background:#fff;
@@ -67,82 +50,100 @@ button{
   font-weight:600;
 }
 
-.hidden{
-  display:none;
+@keyframes pop{
+  from{transform:scale(0.7);opacity:0;}
+  to{transform:scale(1);opacity:1;}
 }
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:translateY(0);}
+.heart{
+  position:fixed;
+  bottom:-10px;
+  font-size:24px;
+  animation:float 4s linear forwards;
+}
+
+@keyframes float{
+  to{
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Background Music -->
-<audio autoplay loop>
+<audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<section class="section">
-  <div class="card">
-    <h1>✨ Something special is waiting for you ✨</h1>
-    <p>Move the little distractions aside 💫</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="card">
-    <p>
-      Hey <b>Sir ji</b>,<br><br>
-      A new year begins…<br>
-      and you’re still the most beautiful part of my life 💜
-    </p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="card">
-    <p>
-      You make me smile without trying,<br>
-      you calm me without saying much,<br>
-      and you mean more to me than you know ❤️
-    </p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="card">
-    <p>
-      In 2026, I want more laughs with you,<br>
-      more late-night talks,<br>
-      more memories,<br>
-      and a lifetime of love with YOU ♾️
-    </p>
-  </div>
-</section>
-
-<section class="section final">
-  <div class="card">
-    <h1>🎆 Happy New Year Sir ji 🎆</h1>
-    <p>
-      I choose YOU today, tomorrow and always.<br><br>
-      <b>Forever with me? 💍</b>
-    </p>
-
-    <button onclick="reveal()">Tap for Final Message 💖</button>
-
-    <p id="loveMsg" class="hidden">
-      <br>I love you baby ❤️ 😘<br>
-      — Diku
-    </p>
-  </div>
-</section>
+<div class="card" id="box">
+  <h1>Hey Sir ji ❤️</h1>
+  <p>Tap the button… I have something special for you 💫</p>
+  <button onclick="next()">Tap me 💖</button>
+</div>
 
 <script>
-function reveal(){
-  document.getElementById("loveMsg").style.display="block";
+let step = 0;
+
+function hearts(){
+  for(let i=0;i<6;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML=["❤️","💖","😘","💋","😍"][Math.floor(Math.random()*5)];
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),4000);
+  }
+}
+
+function next(){
+  hearts();
+  document.getElementById("music").play();
+
+  const box=document.getElementById("box");
+
+  step++;
+
+  if(step==1){
+    box.innerHTML=`
+      <p>
+      You make my heart smile<br>
+      without even trying 😘
+      </p>
+      <button onclick="next()">Touch my heart ❤️</button>
+    `;
+  }
+  else if(step==2){
+    box.innerHTML=`
+      <p>
+      Every laugh with you,<br>
+      every moment with you,<br>
+      is my favorite 💕
+      </p>
+      <button onclick="next()">One more surprise 😍</button>
+    `;
+  }
+  else if(step==3){
+    box.innerHTML=`
+      <p>
+      In 2026…<br>
+      I don’t want anything new,<br>
+      I just want YOU ♾️
+      </p>
+      <button onclick="next()">Final 💍</button>
+    `;
+  }
+  else{
+    box.innerHTML=`
+      <h1>Happy New Year 🎆</h1>
+      <p>
+      I choose you today,<br>
+      tomorrow & forever ❤️<br><br>
+      <b>— I Love you 😘</b>
+      </p>
+    `;
+  }
 }
 </script>
 
